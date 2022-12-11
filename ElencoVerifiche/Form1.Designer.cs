@@ -36,7 +36,7 @@
             this.buttonElimina = new System.Windows.Forms.Button();
             this.buttonModifica = new System.Windows.Forms.Button();
             this.textBoxMedia = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxMedia = new System.Windows.Forms.ComboBox();
             this.labelMedia = new System.Windows.Forms.Label();
             this.buttonAggiungi = new System.Windows.Forms.Button();
             this.labelId = new System.Windows.Forms.Label();
@@ -110,19 +110,20 @@
             // textBoxMedia
             // 
             this.textBoxMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMedia.Location = new System.Drawing.Point(623, 405);
+            this.textBoxMedia.Location = new System.Drawing.Point(623, 366);
             this.textBoxMedia.Name = "textBoxMedia";
             this.textBoxMedia.Size = new System.Drawing.Size(165, 31);
             this.textBoxMedia.TabIndex = 3;
             // 
-            // comboBox1
+            // comboBoxMedia
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(623, 366);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(165, 33);
-            this.comboBox1.TabIndex = 4;
+            this.comboBoxMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxMedia.FormattingEnabled = true;
+            this.comboBoxMedia.Location = new System.Drawing.Point(623, 403);
+            this.comboBoxMedia.Name = "comboBoxMedia";
+            this.comboBoxMedia.Size = new System.Drawing.Size(165, 33);
+            this.comboBoxMedia.TabIndex = 4;
+            this.comboBoxMedia.SelectedIndexChanged += new System.EventHandler(this.comboBoxMedia_SelectedIndexChanged);
             // 
             // labelMedia
             // 
@@ -190,6 +191,7 @@
             this.textBoxId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxId.Location = new System.Drawing.Point(66, 10);
             this.textBoxId.Name = "textBoxId";
+            this.textBoxId.ReadOnly = true;
             this.textBoxId.Size = new System.Drawing.Size(102, 26);
             this.textBoxId.TabIndex = 11;
             // 
@@ -246,7 +248,7 @@
             this.Controls.Add(this.labelId);
             this.Controls.Add(this.buttonAggiungi);
             this.Controls.Add(this.labelMedia);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxMedia);
             this.Controls.Add(this.textBoxMedia);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonElimina);
@@ -264,7 +266,7 @@
         private System.Windows.Forms.Button buttonElimina;
         private System.Windows.Forms.Button buttonModifica;
         private System.Windows.Forms.TextBox textBoxMedia;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxMedia;
         private System.Windows.Forms.Label labelMedia;
         private System.Windows.Forms.Button buttonAggiungi;
         private System.Windows.Forms.Label labelId;

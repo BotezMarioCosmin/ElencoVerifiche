@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ElencoVerifiche
 {
@@ -18,6 +20,8 @@ namespace ElencoVerifiche
         string[] votiString = new string[] { "1", "1+", "1.5", "2-", "2", "2+", "2.5", "3-", "3", "3+", "3.5", "4-", "4", "4+", "4.5", "5-", "5", "5+", "5.5", "6-", "6", "6+", "6.5", "7-", "7", "7+", "7.5", "8-", "8", "8+", "8.5", "9-", "9", "9+", "9.5", "10-", "10" };
         string[] materie = new string[] {"Italiano","Storia","Inglese","Matematica","Informatica","Motoria","Religione" };
         Verifica[] verifiche = new Verifica[100];
+        int id = 0;
+        double media = 0;
 
         public Form1()
         {
@@ -31,11 +35,23 @@ namespace ElencoVerifiche
             {
                 comboBoxMateria.Items.Add(materie[i]);
             }
+            for (int i = 0; i < materie.Length; i++)
+            {
+                comboBoxMedia.Items.Add(materie[i]);
+            }
 
             Verifica v = new Verifica(getIdDisponibile(), "Italiano", 10, "12/12/2022");
             verifiche[0] = v;
+            Verifica v1 = new Verifica(getIdDisponibile(), "Italiano", 4, "9/12/2022");
+            verifiche[1] = v;
+            Verifica v2 = new Verifica(getIdDisponibile(), "Storia", 8, "13/12/2022");
+            verifiche[2] = v;
 
             aggiungiVerificaElenco(v);
+            aggiungiVerificaElenco(v1);
+            aggiungiVerificaElenco(v2);
+
+            textBoxId.Text = Convert.ToString(id);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,6 +80,11 @@ namespace ElencoVerifiche
             oggetto.SubItems.Add(Convert.ToString(comboBoxVoto.SelectedItem));
             oggetto.SubItems.Add(textBoxData.Text);
             listView1.Items.Add(oggetto);
+
+            verifiche[id + 1].Id = Convert.ToInt32(textBoxId.Text);
+            verifiche[id + 1].Materia = comboBoxMateria.SelectedItem.ToString();
+            verifiche[id + 1].Voto = Convert.ToDouble(comboBoxVoto.SelectedItem);
+            verifiche[id + 1].Data = textBoxData.Text;
         }
 
         public int getIdDisponibile()
@@ -72,10 +93,41 @@ namespace ElencoVerifiche
             {
                 if (verifiche[i] == null)
                 {
-                    return i+1;                
+                    id = i;
+                    return id++;                
                 }
             }
             return -1;
+        }
+
+        private void comboBoxMedia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int tmp = comboBoxMedia.SelectedIndex;
+            string materia = materie[tmp];
+
+            media = 0;
+            calcolaMedia(materia);
+            textBoxMedia.Text = Convert.ToString(media);
+        }
+
+
+        public void calcolaMedia(string materia)
+        {
+            double m;
+            double voti = 0;
+            int cont = 0;
+
+            for (int i = 0; verifiche[i] != null; i++)
+            {
+                if (verifiche[i].Materia == materia)
+                {
+                    voti = voti + verifiche[i].Voto;
+                    cont++;
+                    m = voti / cont;
+
+                    media = m;
+                }
+            }
         }
     }
 }
