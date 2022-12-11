@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderMateria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderVoto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderData = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonElimina = new System.Windows.Forms.Button();
             this.buttonModifica = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxMedia = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelMedia = new System.Windows.Forms.Label();
             this.buttonAggiungi = new System.Windows.Forms.Button();
@@ -42,12 +46,9 @@
             this.labelData = new System.Windows.Forms.Label();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.textBoxData = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderMateria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderVoto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderData = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.comboBoxVoto = new System.Windows.Forms.ComboBox();
+            this.comboBoxMateria = new System.Windows.Forms.ComboBox();
+            this.buttonOggi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -65,6 +66,26 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // columnHeaderId
+            // 
+            this.columnHeaderId.Text = "Id";
+            this.columnHeaderId.Width = 150;
+            // 
+            // columnHeaderMateria
+            // 
+            this.columnHeaderMateria.Text = "Materia";
+            this.columnHeaderMateria.Width = 150;
+            // 
+            // columnHeaderVoto
+            // 
+            this.columnHeaderVoto.Text = "Voto";
+            this.columnHeaderVoto.Width = 150;
+            // 
+            // columnHeaderData
+            // 
+            this.columnHeaderData.Text = "Data";
+            this.columnHeaderData.Width = 150;
             // 
             // buttonElimina
             // 
@@ -86,13 +107,13 @@
             this.buttonModifica.Text = "Modifica";
             this.buttonModifica.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxMedia
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(623, 405);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 31);
-            this.textBox1.TabIndex = 3;
+            this.textBoxMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMedia.Location = new System.Drawing.Point(623, 405);
+            this.textBoxMedia.Name = "textBoxMedia";
+            this.textBoxMedia.Size = new System.Drawing.Size(165, 31);
+            this.textBoxMedia.TabIndex = 3;
             // 
             // comboBox1
             // 
@@ -122,6 +143,7 @@
             this.buttonAggiungi.TabIndex = 6;
             this.buttonAggiungi.Text = "Aggiungi";
             this.buttonAggiungi.UseVisualStyleBackColor = true;
+            this.buttonAggiungi.Click += new System.EventHandler(this.buttonAggiungi_Click);
             // 
             // labelId
             // 
@@ -179,51 +201,43 @@
             this.textBoxData.Size = new System.Drawing.Size(187, 26);
             this.textBoxData.TabIndex = 14;
             // 
-            // comboBox2
+            // comboBoxVoto
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(66, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(102, 28);
-            this.comboBox2.TabIndex = 15;
+            this.comboBoxVoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxVoto.FormattingEnabled = true;
+            this.comboBoxVoto.Location = new System.Drawing.Point(66, 50);
+            this.comboBoxVoto.Name = "comboBoxVoto";
+            this.comboBoxVoto.Size = new System.Drawing.Size(102, 28);
+            this.comboBoxVoto.TabIndex = 15;
             // 
-            // comboBox3
+            // comboBoxMateria
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(241, 10);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(187, 28);
-            this.comboBox3.TabIndex = 16;
+            this.comboBoxMateria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxMateria.FormattingEnabled = true;
+            this.comboBoxMateria.Location = new System.Drawing.Point(241, 10);
+            this.comboBoxMateria.Name = "comboBoxMateria";
+            this.comboBoxMateria.Size = new System.Drawing.Size(187, 28);
+            this.comboBoxMateria.TabIndex = 16;
             // 
-            // columnHeaderId
+            // buttonOggi
             // 
-            this.columnHeaderId.Text = "Id";
-            this.columnHeaderId.Width = 150;
-            // 
-            // columnHeaderMateria
-            // 
-            this.columnHeaderMateria.Text = "Materia";
-            this.columnHeaderMateria.Width = 150;
-            // 
-            // columnHeaderVoto
-            // 
-            this.columnHeaderVoto.Text = "Voto";
-            this.columnHeaderVoto.Width = 150;
-            // 
-            // columnHeaderData
-            // 
-            this.columnHeaderData.Text = "Data";
-            this.columnHeaderData.Width = 150;
+            this.buttonOggi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOggi.Location = new System.Drawing.Point(434, 50);
+            this.buttonOggi.Name = "buttonOggi";
+            this.buttonOggi.Size = new System.Drawing.Size(75, 27);
+            this.buttonOggi.TabIndex = 17;
+            this.buttonOggi.Text = "OGGI";
+            this.buttonOggi.UseVisualStyleBackColor = true;
+            this.buttonOggi.Click += new System.EventHandler(this.buttonOggi_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.buttonOggi);
+            this.Controls.Add(this.comboBoxMateria);
+            this.Controls.Add(this.comboBoxVoto);
             this.Controls.Add(this.textBoxData);
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelData);
@@ -233,7 +247,7 @@
             this.Controls.Add(this.buttonAggiungi);
             this.Controls.Add(this.labelMedia);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxMedia);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonElimina);
             this.Controls.Add(this.listView1);
@@ -249,7 +263,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button buttonElimina;
         private System.Windows.Forms.Button buttonModifica;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxMedia;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelMedia;
         private System.Windows.Forms.Button buttonAggiungi;
@@ -260,12 +274,13 @@
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.TextBox textBoxData;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxVoto;
+        private System.Windows.Forms.ComboBox comboBoxMateria;
         private System.Windows.Forms.ColumnHeader columnHeaderId;
         private System.Windows.Forms.ColumnHeader columnHeaderMateria;
         private System.Windows.Forms.ColumnHeader columnHeaderVoto;
         private System.Windows.Forms.ColumnHeader columnHeaderData;
+        private System.Windows.Forms.Button buttonOggi;
     }
 }
 
