@@ -49,6 +49,12 @@
             this.comboBoxVoto = new System.Windows.Forms.ComboBox();
             this.comboBoxMateria = new System.Windows.Forms.ComboBox();
             this.buttonOggi = new System.Windows.Forms.Button();
+            this.panelElimina = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBoxEliminaId = new System.Windows.Forms.ComboBox();
+            this.buttonX = new System.Windows.Forms.Button();
+            this.panelElimina.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -90,22 +96,24 @@
             // buttonElimina
             // 
             this.buttonElimina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonElimina.Location = new System.Drawing.Point(623, 89);
+            this.buttonElimina.Location = new System.Drawing.Point(623, 151);
             this.buttonElimina.Name = "buttonElimina";
             this.buttonElimina.Size = new System.Drawing.Size(165, 56);
             this.buttonElimina.TabIndex = 1;
             this.buttonElimina.Text = "Elimina";
             this.buttonElimina.UseVisualStyleBackColor = true;
+            this.buttonElimina.Click += new System.EventHandler(this.buttonElimina_Click);
             // 
             // buttonModifica
             // 
             this.buttonModifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModifica.Location = new System.Drawing.Point(623, 151);
+            this.buttonModifica.Location = new System.Drawing.Point(623, 89);
             this.buttonModifica.Name = "buttonModifica";
             this.buttonModifica.Size = new System.Drawing.Size(165, 56);
             this.buttonModifica.TabIndex = 2;
             this.buttonModifica.Text = "Modifica";
             this.buttonModifica.UseVisualStyleBackColor = true;
+            this.buttonModifica.Click += new System.EventHandler(this.buttonModifica_Click);
             // 
             // textBoxMedia
             // 
@@ -232,11 +240,67 @@
             this.buttonOggi.UseVisualStyleBackColor = true;
             this.buttonOggi.Click += new System.EventHandler(this.buttonOggi_Click);
             // 
+            // panelElimina
+            // 
+            this.panelElimina.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelElimina.Controls.Add(this.buttonX);
+            this.panelElimina.Controls.Add(this.comboBoxEliminaId);
+            this.panelElimina.Controls.Add(this.button1);
+            this.panelElimina.Controls.Add(this.label1);
+            this.panelElimina.Location = new System.Drawing.Point(623, 151);
+            this.panelElimina.Name = "panelElimina";
+            this.panelElimina.Size = new System.Drawing.Size(165, 102);
+            this.panelElimina.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 20);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Id:";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 61);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 38);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Elimina";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBoxEliminaId
+            // 
+            this.comboBoxEliminaId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEliminaId.FormattingEnabled = true;
+            this.comboBoxEliminaId.Location = new System.Drawing.Point(44, 29);
+            this.comboBoxEliminaId.Name = "comboBoxEliminaId";
+            this.comboBoxEliminaId.Size = new System.Drawing.Size(76, 28);
+            this.comboBoxEliminaId.TabIndex = 19;
+            // 
+            // buttonX
+            // 
+            this.buttonX.BackColor = System.Drawing.Color.IndianRed;
+            this.buttonX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX.Location = new System.Drawing.Point(130, -1);
+            this.buttonX.Name = "buttonX";
+            this.buttonX.Size = new System.Drawing.Size(34, 23);
+            this.buttonX.TabIndex = 20;
+            this.buttonX.Text = "X";
+            this.buttonX.UseVisualStyleBackColor = false;
+            this.buttonX.Click += new System.EventHandler(this.buttonX_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelElimina);
             this.Controls.Add(this.buttonOggi);
             this.Controls.Add(this.comboBoxMateria);
             this.Controls.Add(this.comboBoxVoto);
@@ -255,6 +319,9 @@
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
             this.Text = "Voti";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelElimina.ResumeLayout(false);
+            this.panelElimina.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,6 +350,11 @@
         private System.Windows.Forms.ColumnHeader columnHeaderVoto;
         private System.Windows.Forms.ColumnHeader columnHeaderData;
         private System.Windows.Forms.Button buttonOggi;
+        private System.Windows.Forms.Panel panelElimina;
+        private System.Windows.Forms.Button buttonX;
+        private System.Windows.Forms.ComboBox comboBoxEliminaId;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
